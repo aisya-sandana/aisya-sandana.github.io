@@ -30,23 +30,21 @@ function linkAction() {
 navLink.forEach((n) => n.addEventListener("click", linkAction));
 
 /*================= ACCORDION SKILLS ==================*/
-const skillsContent = document.getElementsByClassName("skills__content");
+const skillContent = document.getElementsByClassName("skills__content");
 const skillsHeader = document.querySelectorAll(".skills__header");
 
-function toggleSkills() {
+function toggleSkills(){
     let itemClass = this.parentNode.className;
 
-    for (i =0; i < skillsContent.length; i++) {
-        skillsContent[i].className = "skills__content skills__close";
+    for (i=0; i<skillContent.length;i++){
+        skillContent[i].className = "skills__content skills__close";
     }
-
-    if (itemClass === "skills__content skills__close") {
-        this.parentNode.classMenu = "skills__content skills__open;"
+    if (itemClass === "skills__content skills__close"){
+        this.parentNode.className = "skills__content skills__open";
     }
 }
-
-skillsHeader.forEach((el) => {
-    el.addEventListener("click", toggleSkills);
+skillsHeader.forEach((el)=>{
+    el.addEventListener("click",toggleSkills);
 });
 
 /*================ QUALIFICATION TABS =================*/
@@ -60,7 +58,7 @@ tabs.forEach((tab) => {
         tabContents.forEach((tabContent) => {
             tabContent.classList.remove("qualification__active");
         });
-        target.classList.add("qualiification__active");
+        target.classList.add("qualification__active");
 
         tabs.forEach((tab) => {
             tab.classList.remove("qualification__active");
@@ -99,7 +97,7 @@ var swiperPortfolio = new Swiper(".portfolio__container", {
     
     navigation: {
         nextEl: ".swiper-button-next",
-        prevEl: ",swiper-button-prev",
+        prevEl: ".swiper-button-prev",
     },
     pagination: {
         el: ".swiper-pagination",
@@ -115,8 +113,8 @@ function scrollActive() {
 
     sections.forEach((current) => {
         const sectionHeight = current.offsetHeight;
-        const sectionTop = curret.offsetTop - 50;
-        sectionId = curret.getAttribute("id");
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute("id");
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             document
@@ -152,7 +150,7 @@ window.addEventListener("scroll", scrollUp);
 /*================= DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
-const icontheme = "uil-sun";
+const iconTheme = "uil-sun";
 
 // Previously selected topic (if user selected)
 const selectedTheme = localStorage.getItem("selected-theme");
@@ -181,6 +179,6 @@ themeButton.addEventListener("click", () => {
     document.body.classList.toggle(darkTheme);
     themeButton.classList.toggle(iconTheme);
     // we save the theme and the curret icon that the user chose
-    localStorage.setItem("selectod-theme", getCurretThehme());
-    localStorage.setItem("selected-icon", getcurretTheme());
+    localStorage.setItem("selected-theme", getCurrentTheme());
+    localStorage.setItem("selected-icon", getCurrentIcon());
 });
